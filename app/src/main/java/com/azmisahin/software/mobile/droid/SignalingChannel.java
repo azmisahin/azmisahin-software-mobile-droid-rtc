@@ -7,7 +7,7 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import org.json.*;
 
-class SignalingChannel {
+public class SignalingChannel {
 
     private Socket socket;
     private String hostname;
@@ -16,7 +16,7 @@ class SignalingChannel {
      * SignalingChannel
      *
      */
-    SignalingChannel() throws URISyntaxException {
+    public SignalingChannel() throws URISyntaxException {
 
         // Signal Options
         IO.Options signal = new IO.Options();

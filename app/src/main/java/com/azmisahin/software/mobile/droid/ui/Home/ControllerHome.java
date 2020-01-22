@@ -27,7 +27,11 @@ public class ControllerHome extends AppCompatActivity {
      * @param view
      */
     public void login(View view) {
+
+        // Login Controller
         Intent intent = new Intent(this, ControllerLogin.class);
+
+        // Activate
         startActivity(intent);
     }
 }

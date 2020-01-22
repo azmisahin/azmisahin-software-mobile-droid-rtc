@@ -22,8 +22,14 @@
         </activity>
         <activity
             android:name=".ui.Login.ControllerLogin"
-            android:label="@string/action_sign_in"
-            ></activity>
+            android:label="@string/action_sign_in">
+
+        </activity>
+        <activity
+            android:name=".ui.Talk.ControllerTalk"
+            android:label="@string/talk_title">
+
+        </activity>
     </application>
 
 </manifest>
