@@ -20,6 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.Login.ControllerLogin"
+            android:label="@string/action_sign_in"
+            ></activity>
     </application>
 
 </manifest>
