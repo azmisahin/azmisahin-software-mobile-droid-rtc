@@ -9,6 +9,8 @@ import org.json.*;
 
 public class SignalingChannel {
 
+    public Emitter event;
+
     private Socket socket;
     private String hostname;
     IO.Options opts;
@@ -17,6 +19,8 @@ public class SignalingChannel {
      *
      */
     public SignalingChannel() throws URISyntaxException {
+
+        event = new Emitter();
 
         // Signal Options
         IO.Options signal = new IO.Options();
@@ -30,13 +34,13 @@ public class SignalingChannel {
         socket = IO.socket(hostname,signal);
 
         // Connection Response
-        socket.on("connection-response", new Emitter.Listener()  {
+        socket.on("login-count-response", new Emitter.Listener()  {
 
             @Override
             public void call(Object... data) {
 
                 // Server On New Count
-                eventEmit("new-connection-count", data);
+                eventEmit("login-count-response", data);
             }
         });
 
@@ -47,7 +51,7 @@ public class SignalingChannel {
             public void call(Object... data) {
 
                 // Server On New Count
-                eventEmit("new-connection-count", data);
+                eventEmit("disconnect-login-response", data);
             }
         });
 
@@ -57,7 +61,7 @@ public class SignalingChannel {
             @Override
             public void call(Object... data) {
                 // Server On New Count
-                eventEmit("new-connection-count", data);
+                eventEmit("login-response", data);
             }
 
         });
@@ -68,17 +72,7 @@ public class SignalingChannel {
             @Override
             public void call(Object... data) {
                 // Server On New Count
-                eventEmit("new-connection-count", data);
-            }
-        });
-
-        // Message Response
-        socket.on("message-response", new Emitter.Listener() {
-
-            @Override
-            public void call(Object... data) {
-                // Server On New Message
-                eventEmit("new-message", data);
+                eventEmit("login-count-response", data);
             }
         });
 
@@ -92,6 +86,9 @@ public class SignalingChannel {
      * @param data Data
      */
     private void eventEmit(String name, Object data){
+
+        // Triger
+        event.emit(name,data);
 
         // Trace
         System.out.println("Name:" + name + " " + "Data:" + data);

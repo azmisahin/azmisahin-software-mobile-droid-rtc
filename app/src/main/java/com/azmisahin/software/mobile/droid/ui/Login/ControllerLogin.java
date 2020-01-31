@@ -41,7 +41,6 @@ public class ControllerLogin extends AppCompatActivity {
         // Login Request Server
         SignalingChannel signaling = new SignalingChannel();
         signaling.connect(userNameString);
-        signaling.sendMessage(userNameString,"start");
 
         // Talk Controller
         Intent intent = new Intent(this, ControllerTalk.class);

@@ -10,4 +10,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="talk_title">Talk</string>
+    <string name="talk_message">Please enter to send</string>
+    <string name="talk_send">Send</string>
 </resources>
